@@ -1,0 +1,35 @@
+# an apiVersion is the versioned schema of this representation of the object
+apiVersion: v1
+# the type of REST Resource this object represents
+kind: Service
+# resources that this kind must have 
+metadata: 
+  name: pythonwebserver
+spec: 
+  ports:
+  - port: 80
+  selector: 
+    app: python
+  type: LoadBalancer
+---   # Seperation of object
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: python
+  name: webapplication
+spec: 
+  replicas: 3   
+  selector: 
+    matchLabels: 
+      app: python
+  template: 
+    metadata: 
+      labels: 
+        app: python
+    spec: 
+      containers: 
+      - image: yellosa96/pythonex:0.1
+        name: pythonex
+        ports: 
+        - containerPort: 80
