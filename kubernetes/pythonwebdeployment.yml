@@ -11,7 +11,8 @@ spec:
   selector: 
     app: python
   type: LoadBalancer
----   # Seperation of object
+---   
+# Seperation of object
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
