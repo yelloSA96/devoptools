@@ -1,0 +1,14 @@
+---
+ apiVersion: v1
+ kind: Pod
+ metadata:  
+   labels:
+     app: firstapp
+   name: dockertutorial
+ spec:
+   containers:
+     - name: docker
+       image: docker/getting-started
+       ports:
+         - containerPort: 80
+     

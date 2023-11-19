@@ -1,0 +1,7 @@
+# Ignoring files
+
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
