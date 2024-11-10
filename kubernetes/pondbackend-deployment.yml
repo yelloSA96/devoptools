@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pondserver
+spec:
+  ports:
+  - port: 8088
+  selector:
+    app: pondbackend
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pondbackend
+  name: pondprojectdeployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pondbackend
+  template:
+    metadata:
+      labels:
+        app: pondbackend
+    spec:
+      containers:
+      - image: yellosa96/pondbackend:13
+        name: pondbackend-13
+        ports:
+        - containerPort: 8088
